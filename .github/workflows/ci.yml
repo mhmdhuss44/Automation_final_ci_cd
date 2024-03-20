@@ -15,7 +15,7 @@ jobs:
           python-version: '3.x'
       - name: Install dependencies
         run: |
-          pip install requests selenium
+          pip install requests selenium jira
 
       - name: Setup ChromeDriver
         uses: browser-actions/setup-chrome@v1
