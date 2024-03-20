@@ -6,11 +6,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from infra_layer.infra_ui.basePage import base
 
-class loginLogic(base):
+class loginFailLogic(base):
     LOGIN_BTN_XPATH='//a[@href="/my-gfw/"]'
     EMAIL_XPATH='//input[@name="email"]'
     PASSWORD_XPATH='//input[@name="password"]'
     SUBMIT_BTN_XPATH='//button[@class="c-button submit-btn"]'
+    ERR_MESSAGE_XPATH='//div[@class="c-form-error"]'
 
 
     def __init__(self, num, list_info, cabs, driver=None):
@@ -58,21 +59,31 @@ class loginLogic(base):
         submit_button.click()
 
 
+    # Method to check if we get error message when we type wrong passworkd
+    def check_for_error_message(self):
+        try:
+            err_msg = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH,self.ERR_MESSAGE_XPATH )))
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
 
 
 
     # Method to execute all steps of the unsuccessful login process
-    def execute_all_log_in_flow(self):
+    def execute_all_failed_log_in_flow(self):
         try:
             self.click_on_sign_in()
             time.sleep(2)
             self.enter_email_adress()
             time.sleep(2)
-            self.enter_password(self.list_info["passwordChrome"])
+            self.enter_password("123456789")
             time.sleep(2)
             self.click_on_submit_btn()
-            time.sleep(5)
-            return True
+            time.sleep(2)
+            result=self.check_for_error_message()
+            return result
         except Exception as e:
             print(e)
             return False

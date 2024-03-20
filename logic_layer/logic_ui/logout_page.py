@@ -6,11 +6,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from infra_layer.infra_ui.basePage import base
 
-class loginLogic(base):
+class logoutLogic(base):
     LOGIN_BTN_XPATH='//a[@href="/my-gfw/"]'
-    EMAIL_XPATH='//input[@name="email"]'
-    PASSWORD_XPATH='//input[@name="password"]'
-    SUBMIT_BTN_XPATH='//button[@class="c-button submit-btn"]'
+    LOGOUT_BTN_XPATH='//button[@fdprocessedid="s11e3a"]'
+    PASSWORD_XPATH = '//input[@name="password"]'
 
 
     def __init__(self, num, list_info, cabs, driver=None):
@@ -40,39 +39,31 @@ class loginLogic(base):
             button.click()
 
 
-    # entering an email adress
-    def enter_email_adress(self):
-        username_input = WebDriverWait(self._driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.EMAIL_XPATH)))
-        username_input.send_keys(self.list_info["emailChrome"])
+    # method to click on the logout button
+    def click_on_logout_btn(self):
+        logout_button = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.LOGOUT_BTN_XPATH)))
+        logout_button.click()
 
 
-    # Method to enter a password
-    def enter_password(self, secret_pass):
-        password_input = WebDriverWait(self._driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.PASSWORD_XPATH)))
-        password_input.send_keys(secret_pass)
+    def verify_success_logout(self):
+        try:
+            password_input = WebDriverWait(self._driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, self.PASSWORD_XPATH)))
+            return True
+        except Exception as e:
+            return False
 
 
-    # Method to click on the submit button
-    def click_on_submit_btn(self):
-        submit_button = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH,self.SUBMIT_BTN_XPATH )))
-        submit_button.click()
+
 
 
 
 
 
     # Method to execute all steps of the unsuccessful login process
-    def execute_all_log_in_flow(self):
-        try:
-            self.click_on_sign_in()
-            time.sleep(2)
-            self.enter_email_adress()
-            time.sleep(2)
-            self.enter_password(self.list_info["passwordChrome"])
-            time.sleep(2)
-            self.click_on_submit_btn()
-            time.sleep(5)
-            return True
-        except Exception as e:
-            print(e)
-            return False
+    def execute_all_log_out_flow(self):
+        self.click_on_logout_btn()
+        time.sleep(2)
+        result=self.verify_success_logout()
+        time.sleep(5)
+        return result
