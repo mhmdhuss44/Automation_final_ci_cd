@@ -57,8 +57,6 @@ class profileInfoLogic(base):
     # Method to execute all steps of the get town  process
     def execute_all_profile_change_flow(self):
         time.sleep(2)
-        self.click_on_sign_in()
-        time.sleep(2)
         self.click_on_update_prof()
         time.sleep(3)
         result=self.get_town_info()
