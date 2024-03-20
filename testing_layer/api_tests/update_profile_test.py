@@ -3,7 +3,7 @@ from infra_layer.infra_api.api_wrapper import APIWrapper
 from logic_layer.logic_api.update_profile_page import update_profile
 
 
-class passwordTests(unittest.TestCase):
+class profileTests(unittest.TestCase):
 
     def setUp(self) -> None:
         self.my_api = APIWrapper()
@@ -16,6 +16,10 @@ class passwordTests(unittest.TestCase):
         town_mod_result = self.password_logic.change_town_name()
         print("The result:",town_mod_result.json())
         self.assertEqual(town_mod_result.status_code, 200, "Expected status code 200")
+
+
+if __name__ == "__main__":
+    print("hiiiiiiiiiiiiiii888iiii")
 
 
 

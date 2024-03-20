@@ -38,6 +38,10 @@ class profileChangeTests(unittest.TestCase):
         self.infra_layer.quit_drive(self.modifyPage._driver)
 
 
+if __name__ == "__main__":
+    print("hiiiiiiiiiiii21iiiiiii")
+
+
 
 
 
