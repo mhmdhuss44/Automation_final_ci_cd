@@ -1,0 +1,20 @@
+{
+  "hub_url": "http://192.168.146.1:4444",
+  "browsers": [
+    {
+      "browser_name": "chrome",
+      "platform_name": "Windows 11"
+    },
+    {
+      "browser_name": "firefox",
+      "platform_name": "Windows 11"
+    }
+  ],
+  "sleep_time": 2,
+  "testing_mode": "parallel" ,
+  "web_link": "https://www.globalforestwatch.org/",
+  "emailChrome": "mhmdhuss44@gmail.com",
+  "passwordchrome": "MHMDhuss2001@",
+  "emailFirefox": "mhmdnoor79@gmail.com",
+  "passwordfirefox": "MHMDhuss2001@"
+}

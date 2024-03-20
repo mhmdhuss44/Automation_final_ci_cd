@@ -1,0 +1,72 @@
+# Class to handle another ui_tests, ensuring that we can't login with the wrong password
+import time
+from selenium.common import NoSuchElementException, StaleElementReferenceException, ElementClickInterceptedException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from infra_layer.infra_ui.basePage import base
+
+class loginLogic(base):
+    LOGIN_BTN_XPATH='//a[@href="/my-gfw/"]'
+    EMAIL_XPATH='//input[@name="email"]'
+    PASSWORD_XPATH='//input[@name="password"]'
+
+
+    def __init__(self, num, list_info, cabs, driver=None):
+        super().__init__(list_info)
+        if driver is None:
+            self.driver_set_up(cabs)
+        else:
+            self._driver = driver
+        self.num = num
+        self.list_info=list_info
+
+    # Method on sign in
+    def click_on_sign_in(self):
+        try:
+            button = WebDriverWait(self._driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
+            button.click()
+        except ElementClickInterceptedException:
+            # Retry clicking on the menu
+            button = WebDriverWait(self._driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
+            button.click()
+        except StaleElementReferenceException:
+            # Retry clicking on the menu
+            button = WebDriverWait(self._driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
+            button.click()
+
+
+    # entering an email adress
+    def enter_email_adress(self):
+        username_input = WebDriverWait(self._driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.EMAIL_XPATH)))
+        username_input.send_keys(self.list_info["emailChrome"])
+
+
+    # Method to enter a password
+    def enter_password(self, secret_pass):
+        password_input = WebDriverWait(self._driver, 10).until(EC.visibility_of_element_located((By.XPATH, self.PASSWORD_XPATH)))
+        password_input.send_keys(secret_pass)
+
+
+    # Method to click on the submit button
+    def click_on_submit_btn(self):
+        button = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[@class="c-button submit-btn"]')))
+        button.click()
+
+
+
+
+
+    # Method to execute all steps of the unsuccessful login process
+    def execute_all_log_in_flow(self):
+        self.click_on_sign_in()
+        time.sleep(2)
+        self.enter_email_adress()
+        time.sleep(2)
+        self.enter_password(self.list_info["passwordChrome"])
+        time.sleep(2)
+        self.click_on_submit_btn()
+        time.sleep(5)
