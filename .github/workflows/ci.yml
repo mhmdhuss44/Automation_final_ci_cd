@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Tests and Generate Report
         run: |
-          pytest testing_layer/api_tests/update_profile_test/profileTests/test_update_town_in_profile.py testing_layer/ui_tests/profile_changes_tests/profileChangeTests/test_run_grid_serial.py --html=report.html
+          pytest main.py --html=report.html
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v2

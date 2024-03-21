@@ -21,9 +21,9 @@ class searchTests(unittest.TestCase):
         for cabs in self.infra_layer.cab_list:
             self.test_verify_successful_area_add(cabs)
 
-    def test_run_grid_parallel(self):
-        with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.infra_layer.cab_list)) as executor:
-            executor.map(self.test_verify_successful_area_add, self.infra_layer.cab_list)
+    # def test_run_grid_parallel(self):
+    #     with concurrent.futures.ThreadPoolExecutor(max_workers=len(self.infra_layer.cab_list)) as executor:
+    #         executor.map(self.test_verify_successful_area_add, self.infra_layer.cab_list)
 
 
     # test_ui to verify that added an area successfully
