@@ -6,4 +6,4 @@
 #
 #     # Call the test_update_town_in_profile method
 #     profile_change_test_instance.test_run_grid_serial()
-#
+

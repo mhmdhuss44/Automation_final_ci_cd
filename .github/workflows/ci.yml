@@ -15,7 +15,7 @@ jobs:
           python-version: '3.x'
       - name: Install dependencies
         run: |
-          pip install requests selenium jira
+          pip install requests selenium jira pytest-html
 
       - name: Setup ChromeDriver
         uses: browser-actions/setup-chrome@v1
@@ -27,12 +27,18 @@ jobs:
         with:
           firefox-version: latest
 
-# this will work whever we call serial or paralel
       - name: Run Selenium Test
         run: python -m unittest testing_layer.api_tests.update_profile_test.profileTests.test_update_town_in_profile
 
       - name: Run passwordLogic testing_layer
         run: python -m unittest testing_layer.ui_tests.profile_changes_tests.profileChangeTests.test_run_grid_serial
-#
-#
-#
+
+      - name: Run Tests and Generate Report
+        run: |
+          pytest --html=report.html
+
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-reports
+          path: report.html

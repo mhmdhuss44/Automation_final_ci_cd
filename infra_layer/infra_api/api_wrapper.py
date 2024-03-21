@@ -31,13 +31,17 @@ class APIWrapper:
     #     else:
     #         return self.response.status_code
     #
-    # def api_post_request(self, url, reqBody):
-    #     headers = {'Authorization': f'Bearer {self.token}'}  # Add token to the headers
-    #     self.response = requests.post(url, json=reqBody, headers=headers)
-    #     if self.response.ok:
-    #         return self.response
-    #     else:
-    #         return self.response.status_code
+
+    def api_post_request(self, url, reqBody):
+        headers = {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Zjk2YjIyZmI1YjlkMDU4YTFlYmNhMSIsInJvbGUiOiJVU0VSIiwicHJvdmlkZXIiOiJsb2NhbCIsImVtYWlsIjoibWhtZGh1c3M0NEBnbWFpbC5jb20iLCJleHRyYVVzZXJEYXRhIjp7ImFwcHMiOlsiZ2Z3Il19LCJjcmVhdGVkQXQiOjE3MTA4NDQ3NjYyMTksImlhdCI6MTcxMDg0NDc2Nn0.sF1arO_w-etp81SYVsGuS84V3nl-t761BX3ddKoSoos"
+            # Add other headers if needed
+        }
+        self.response = requests.post(url, json=reqBody, headers=headers)
+        if self.response.ok:
+            return self.response
+        else:
+            return self.response.status_code
 
 
     def api_patch_request(self, url, reqBody):

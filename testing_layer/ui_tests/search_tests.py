@@ -4,7 +4,8 @@ import unittest
 import concurrent.futures
 
 from infra_layer.infra_ui.wrapper import browserWrapper
-from logic_layer.logic_ui.search_fail_page import searchSucess, searchfail
+from logic_layer.logic_ui.search_fail_page import searchfail
+from logic_layer.logic_ui.search_sucess_page import searchSucess
 
 
 class searchTests(unittest.TestCase):
