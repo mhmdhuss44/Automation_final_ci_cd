@@ -54,7 +54,7 @@ class checkCountryLogic(base):
 
     # Method to execute all steps of the unsuccessful login process
     def execute_all_check_country_flow(self):
-        self.click_on_account()
+        # self.click_on_account()
         time.sleep(2)
         result=self.click_on_my_areas()
         time.sleep(5)
