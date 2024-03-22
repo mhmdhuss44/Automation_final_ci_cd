@@ -17,17 +17,17 @@ class areaTests(unittest.TestCase):
 
 
     # test_ui to verify that added an area successfully
-    def verify_successful_area_add(self, cab_info):
+    def verify_successful_area_add(self, cab_info,infra_layer):
         cap, browser_type = cab_info
 
-        self.loginPage = loginLogic(browser_type, self.infra_layer.get_all_configurations(), cap)
+        self.loginPage = loginLogic(browser_type, infra_layer.get_all_configurations(), cap)
         self.loginPage.execute_all_log_in_flow()
 
-        self.added_area = checkCountryLogic(browser_type,self.infra_layer.get_all_configurations(),cap,self.loginPage._driver)
+        self.added_area = checkCountryLogic(browser_type,infra_layer.get_all_configurations(),cap,self.loginPage._driver)
         result=self.added_area.execute_all_check_country_flow()
         assert result==True, "adding area has failed"
 
-        self.infra_layer.quit_drive(self.added_area._driver)
+        infra_layer.quit_drive(self.added_area._driver)
 
 
 

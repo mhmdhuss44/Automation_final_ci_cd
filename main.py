@@ -13,7 +13,7 @@ def test_run_grid_serial(infra_layer):
         # Instantiate the areaTests class
         search_test_instance = areaTests()
         # Pass any necessary parameters to the test method
-        search_test_instance.verify_successful_area_add(cabs)
+        search_test_instance.verify_successful_area_add(cabs,infra_layer)
         # You may add additional test methods from areaTests if needed
 
 if __name__ == "__main__":
