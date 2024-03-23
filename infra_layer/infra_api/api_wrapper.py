@@ -3,8 +3,8 @@ import requests
 from jira import JIRA
 
 class APIWrapper:
-    # PATH_JSON = r"C:\Users\mhmdh\Desktop\ci_cd_end\automation_project_ci_cd\config_api.json"
-    PATH_JSON = r"config_api.json"
+    PATH_JSON = r"C:\Users\mhmdh\Desktop\savedCi\Automation_final_ci_cd\config_api.json"
+    # PATH_JSON = r"config_api.json"
 
 
     def __init__(self):
@@ -21,16 +21,23 @@ class APIWrapper:
         self.url = json_content.get('url')
         self.text = json_content.get('words')
         self.jira_url = json_content.get('jira_url')
+        self.emailAdress = json_content.get('emailChrome')
+        self.usr_id = json_content.get('userid')
 
-    # def api_get_request(self, url, reqBody=None):
-    #     headers = {'Authorization': f'Bearer {self.token}'}  # Add token to the headers
-    #     self.response = self.my_request.get(url, headers=headers)
-    #
-    #     if self.response.ok:
-    #         return self.response
-    #     else:
-    #         return self.response.status_code
-    #
+
+
+    def api_get_request(self, url, reqBody=None):
+        headers = {
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Zjk2YjIyZmI1YjlkMDU4YTFlYmNhMSIsInJvbGUiOiJVU0VSIiwicHJvdmlkZXIiOiJsb2NhbCIsImVtYWlsIjoibWhtZGh1c3M0NEBnbWFpbC5jb20iLCJleHRyYVVzZXJEYXRhIjp7ImFwcHMiOlsiZ2Z3Il19LCJjcmVhdGVkQXQiOjE3MTA4NDQ3NjYyMTksImlhdCI6MTcxMDg0NDc2Nn0.sF1arO_w-etp81SYVsGuS84V3nl-t761BX3ddKoSoos"
+            # Add other headers if needed
+        }
+        self.response = self.my_request.get(url, headers=headers)
+
+        if self.response.ok:
+            return self.response
+        else:
+            return self.response.status_code
+
 
     def api_post_request(self, url, reqBody):
         headers = {
