@@ -1,0 +1,4 @@
+selenium~=4.18.1
+requests~=2.31.0
+jira~=3.6.0
+random2~=1.0.2
