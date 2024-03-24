@@ -7,6 +7,8 @@ class countryInfo:
         self.my_api = api_object
         self.url=url
 
+
+    # we choose a random country out of all countries
     def random_country(self):
         country_iso = [
             "USA", "CHN", "JPN", "DEU", "GBR", "FRA", "ITA", "CAN", "RUS", "IND", "BRA", "AUS", "ESP", "NLD", "CHE",
@@ -23,7 +25,7 @@ class countryInfo:
 
 
 
-    # change town name to another name
+    # we get the random country info and verify they are true
     def get_random_country_info(self):
         rand_country=self.random_country()
         country_url = f"{self.url}api/gfw/v2/geostore/admin/{rand_country}/?thresh=0.005"

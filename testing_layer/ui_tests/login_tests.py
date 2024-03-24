@@ -35,6 +35,7 @@ class loginTests(unittest.TestCase):
         self.infra_layer.quit_drive(self.loginPage._driver)
 
 
+    # to verify that we can successfuly logout after doing login
     def test_verify_successful_log_out(self, cab_info):
         cap, browser_type = cab_info
 

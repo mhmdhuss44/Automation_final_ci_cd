@@ -21,22 +21,22 @@ class logoutLogic(base):
         self.num = num
         self.list_info=list_info
 
-    # Method on sign in
+    # Method on navigate to the login info page
     def click_on_sign_in(self):
         try:
-            button = WebDriverWait(self._driver, 10).until(
+            login_home_page = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            login_home_page.click()
         except ElementClickInterceptedException:
             # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
+            login_home_page = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            login_home_page.click()
         except StaleElementReferenceException:
             # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
+            login_home_page = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            login_home_page.click()
 
 
     # method to click on the logout button
@@ -45,6 +45,7 @@ class logoutLogic(base):
         logout_button.click()
 
 
+    # method to verify that the logout is successful by checking elemnts on the page
     def verify_success_logout(self):
         try:
             password_input = WebDriverWait(self._driver, 10).until(
@@ -57,13 +58,8 @@ class logoutLogic(base):
 
 
 
-
-
-
     # Method to execute all steps of the unsuccessful login process
     def execute_all_log_out_flow(self):
         self.click_on_logout_btn()
-        time.sleep(2)
         result=self.verify_success_logout()
-        time.sleep(5)
         return result

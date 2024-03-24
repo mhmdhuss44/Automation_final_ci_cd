@@ -23,19 +23,19 @@ class profileChangeTests(unittest.TestCase):
             executor.map(self.test_verify_successful_town_change, self.infra_layer.cab_list)
 
 
-    # test to verify that the new town name is sakhnen
+    # test to verify that the new town name is changed - this is connected to a test in the api tests
     def test_verify_successful_town_change(self, cab_info):
         cap, browser_type = cab_info
 
         self.loginPage = loginLogic(browser_type, self.infra_layer.get_all_configurations(), cap)
         self.loginPage.execute_all_log_in_flow()
 
-        self.modifyPage=profileInfoLogic(browser_type, self.infra_layer.get_all_configurations(), cap,self.loginPage._driver)
-        result=self.modifyPage.execute_all_profile_change_flow()
+        self.modify_profile_Page=profileInfoLogic(browser_type, self.infra_layer.get_all_configurations(), cap,self.loginPage._driver)
+        result=self.modify_profile_Page.execute_all_profile_change_flow()
 
         assert result == "haifa", "changing location has failed"
 
-        self.infra_layer.quit_drive(self.modifyPage._driver)
+        self.infra_layer.quit_drive(self.modify_profile_Page._driver)
 
 
 

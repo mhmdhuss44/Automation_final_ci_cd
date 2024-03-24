@@ -11,7 +11,7 @@ class AreaTests(unittest.TestCase):
         self.area_logic = addArea(self.my_api,self.my_api.url)
 
 
-    # to make sure that we chnaged the town successfully
+    # to make sure that we chnaged the town successfully - this is a completion to a ui test
     def test_add_new_area(self):
         # first variable is the wanted password len , third is for conating any digit, third for upper case letter and fourth for special char
         area_result = self.area_logic.add_new_area()

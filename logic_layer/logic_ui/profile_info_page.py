@@ -21,28 +21,29 @@ class profileInfoLogic(base):
         self.num = num
         self.list_info=list_info
 
-    # Method on sign in
+    # Method on click on user page
     def click_on_sign_in(self):
         try:
-            button = WebDriverWait(self._driver, 10).until(
+            user_page_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.USR_PROFILE_XPATH)))
-            button.click()
+            user_page_button.click()
         except ElementClickInterceptedException:
             # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
+            user_page_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.USR_PROFILE_XPATH)))
-            button.click()
+            user_page_button.click()
         except StaleElementReferenceException:
             # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
+            user_page_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.USR_PROFILE_XPATH)))
-            button.click()
+            user_page_button.click()
 
 
-    # Method to click on the login button on Firefox
+    # Method to click on the update profile button
     def click_on_update_prof(self):
-        button = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.UPDATE_PROFILE_BTN_XPATH)))
-        button.click()
+        update_profile_button = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.UPDATE_PROFILE_BTN_XPATH)))
+        update_profile_button.click()
+
 
     # Method to get the towns info and return it
     def get_town_info(self):
@@ -56,9 +57,6 @@ class profileInfoLogic(base):
 
     # Method to execute all steps of the get town  process
     def execute_all_profile_change_flow(self):
-        time.sleep(2)
         self.click_on_update_prof()
-        time.sleep(3)
         result=self.get_town_info()
-        time.sleep(3)
         return result

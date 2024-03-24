@@ -25,19 +25,19 @@ class loginLogic(base):
     # Method on sign in
     def click_on_sign_in(self):
         try:
-            button = WebDriverWait(self._driver, 10).until(
+            login_page_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            login_page_button.click()
         except ElementClickInterceptedException:
             # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
+            login_page_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            login_page_button.click()
         except StaleElementReferenceException:
             # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
+            login_page_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            login_page_button.click()
 
 
     # entering an email adress
@@ -60,18 +60,13 @@ class loginLogic(base):
 
 
 
-
     # Method to execute all steps of the unsuccessful login process
     def execute_all_log_in_flow(self):
         try:
             self.click_on_sign_in()
-            time.sleep(2)
             self.enter_email_adress()
-            time.sleep(2)
             self.enter_password(self.list_info["passwordChrome"])
-            time.sleep(2)
             self.click_on_submit_btn()
-            time.sleep(5)
             return True
         except Exception as e:
             print(e)

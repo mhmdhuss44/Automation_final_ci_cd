@@ -1,9 +1,7 @@
 import time
-from selenium.common import ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from infra_layer.infra_ui.basePage import base
 
 
@@ -27,7 +25,7 @@ class searchOverload(base):
             EC.element_to_be_clickable((By.XPATH, self.SEARCH_PAGE_XPATH)))
         search_page.click()
 
-    # a method to click on the search bar and write something
+    # a method to click on the search bar and write something-in this cas the word tree 1000 times
     def click_on_search_bar_and_type(self):
         search_bar = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.SEARCH_BTN_XPAAH)))

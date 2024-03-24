@@ -27,22 +27,22 @@ class languageTests(unittest.TestCase):
             executor.map(self.test_verify_successful_login_different_langauge, self.infra_layer.cab_list)
 
 
-    # test_ui to verify that we can search in hebrw langaue
+    # test_ui to verify that we can search under different language settings
     def test_verify_successful_search_different_langauge(self, cab_info):
         cap, browser_type = cab_info
 
 
-        self.langauge_change = languageLogic(browser_type, self.infra_layer.get_all_configurations(), cap)
-        changing_language_result = self.langauge_change.execute_all_langauge_change_flow()
+        self.search_language = languageLogic(browser_type, self.infra_layer.get_all_configurations(), cap)
+        changing_language_result = self.search_language.execute_all_langauge_change_flow()
 
-        self.search_success = searchSucess(browser_type,self.infra_layer.get_all_configurations(),cap,self.langauge_change._driver)
+        self.search_success = searchSucess(browser_type,self.infra_layer.get_all_configurations(),cap,self.search_language._driver)
         result=self.search_success.search_result_sucess_flow()
         assert result==True, "search has failed!"
 
         self.infra_layer.quit_drive(self.search_success._driver)
 
 
-    # test_ui to verify that we can successfuly login when changing langaugage seetings
+    # ui test to verify that we can successfuly login when changing our account language
     def test_verify_successful_login_different_langauge(self, cab_info):
         cap, browser_type = cab_info
 

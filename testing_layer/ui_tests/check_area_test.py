@@ -2,12 +2,10 @@ import concurrent.futures.thread
 import time
 import unittest
 import concurrent.futures
-
 from infra_layer.infra_ui.wrapper import browserWrapper
 from logic_layer.logic_ui.check_country_page import checkCountryLogic
 from logic_layer.logic_ui.login_page import loginLogic
-from logic_layer.logic_ui.search_fail_page import searchfail
-from logic_layer.logic_ui.search_sucess_page import searchSucess
+
 
 
 class areaTests(unittest.TestCase):
@@ -16,7 +14,7 @@ class areaTests(unittest.TestCase):
         self.configs=self.infra_layer.get_all_configurations()
 
 
-    # test_ui to verify that added an area successfully
+    # test_ui to verify that added an area successfully - this is a completion of an api test
     def verify_successful_area_add(self, cab_info,infra_layer):
         cap, browser_type = cab_info
 

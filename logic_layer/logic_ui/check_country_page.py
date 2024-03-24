@@ -21,25 +21,23 @@ class checkCountryLogic(base):
         self.num = num
         self.list_info=list_info
 
-    # Method on sign in
+
+
+    # we click on our account page
     def click_on_account(self):
         try:
-            button = WebDriverWait(self._driver, 10).until(
+            my_account_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            my_account_button.click()
         except ElementClickInterceptedException:
             # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
+            my_account_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
-        except StaleElementReferenceException:
-            # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            my_account_button.click()
 
 
-    # method to click on the logout button
+
+    # method to click on my areas and checks of turkey is in them-> return True , else ->return False
     def click_on_my_areas(self):
         area_componant = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.GET_MY_AREAS)))
         result_text=area_componant.text
@@ -54,8 +52,10 @@ class checkCountryLogic(base):
 
     # Method to execute all steps of the unsuccessful login process
     def execute_all_check_country_flow(self):
-        # self.click_on_account()
-        time.sleep(2)
-        result=self.click_on_my_areas()
-        time.sleep(5)
-        return result
+        try:
+            # self.click_on_account()
+            result=self.click_on_my_areas()
+            return result
+        except Exception as e:
+            print(e)
+            return False

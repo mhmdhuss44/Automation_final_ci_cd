@@ -2,7 +2,6 @@ import concurrent.futures.thread
 import time
 import unittest
 import concurrent.futures
-
 from infra_layer.infra_ui.wrapper import browserWrapper
 from logic_layer.logic_ui.search_fail_page import searchfail
 from logic_layer.logic_ui.search_overload import searchOverload
@@ -25,7 +24,7 @@ class searchTests(unittest.TestCase):
             executor.map(self.test_verify_successful_overload_search, self.infra_layer.cab_list)
 
 
-    # test_ui to verify that we can search in hebrw langaue
+    # test_ui to verify that we can search successfuly and get a valid results(relevant)
     def test_verify_successful_search(self, cab_info):
         cap, browser_type = cab_info
 
@@ -36,7 +35,7 @@ class searchTests(unittest.TestCase):
         self.infra_layer.quit_drive(self.search_success._driver)
 
 
-    # negative test_ui : test_ui to verify that when we search invalid input we dont get any serach result
+    # test_ui to verify that when we search invalid input we dont get any serach result
     def test_verify_unsuccessful_search(self,cab_info):
         cap, browser_type = cab_info
 
@@ -48,6 +47,7 @@ class searchTests(unittest.TestCase):
 
 
 
+    # non-functional test to try and search a very long input and see how the system handels it
     def test_verify_successful_overload_search(self, cab_info):
         cap, browser_type = cab_info
 

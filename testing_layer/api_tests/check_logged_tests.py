@@ -12,10 +12,11 @@ class loggedInfoTests(unittest.TestCase):
 
 
 
-    # to make sure that we chnaged the town successfully
+    # to make sure that we suceesfully are logged in with valid details
     def test_check_if_success_logged_in(self):
         print("The result:",self.login_result.json())
         self.assertEqual(self.login_result.status_code, 200, "Expected status code 200")
+
 
     # Test if the ID matches the expected ID (thats written in the json file)
     def test_check_id(self):

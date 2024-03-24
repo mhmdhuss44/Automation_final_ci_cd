@@ -25,39 +25,27 @@ class languageLogic(base):
         self.num = num
         self.list_info=list_info
 
-    # Method to click on langauges
+    # Method to click on langauges change page
     def click_on_languages(self):
-        try:
-            button = WebDriverWait(self._driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, self.LANGAUGES_BTN_XPATH)))
-            button.click()
-        except ElementClickInterceptedException:
-            # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, self.LANGAUGES_BTN_XPATH)))
-            button.click()
-        except StaleElementReferenceException:
-            # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, self.LANGAUGES_BTN_XPATH)))
-            button.click()
+        languages_button = WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.LANGAUGES_BTN_XPATH)))
+        languages_button.click()
 
 
-
-    # Method to click on the submit button
+    # Method to choose another language->we choose france
     def click_on_wanted_langauge(self):
         submit_button = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH,self.WANTED_LANGUAGE_XPATH )))
         submit_button.click()
 
-        # a method navigate us to the search page
 
+    # a method navigate us to the search page
     def click_on_search_page(self):
         search_page = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.SEARCH_PAGE_XPATH)))
         search_page.click()
 
-        # a method to click on the search bar and write something
 
+    # a method to click on the search bar and write something in france
     def click_on_search_bar_and_type(self):
         search_bar = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.SEARCH_BTN_XPAAH)))
@@ -65,55 +53,37 @@ class languageLogic(base):
         search_bar.clear()  # Clear any existing text in the input field
         search_bar.send_keys("arbre")
 
-        # a method to click on the search
+
+     # a method to click on the search
 
     def click_on_search_btn(self):
         search_btn = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.PRESS_ON_SEARCH_BTN_XPATH)))
-        search_btn.click()
+        search_btn.click(
+
+        )
 
     def click_on_home_btn(self):
         try:
-            button = WebDriverWait(self._driver, 10).until(
+            home_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            home_button.click()
         except ElementClickInterceptedException:
             # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
+            home_button = WebDriverWait(self._driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
-        except StaleElementReferenceException:
-            # Retry clicking on the menu
-            button = WebDriverWait(self._driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, self.LOGIN_BTN_XPATH)))
-            button.click()
+            home_button.click()
 
 
 
-        # takes the first result and checks if its relevant
 
-    def check_on_first_result(self):
-        first_result = WebDriverWait(self._driver, 10).until(
-            EC.element_to_be_clickable((By.XPATH, self.FIRST_SEARCH_RESULT)))
-        name_of_result = first_result.text
-        if "forest" in name_of_result:
-            return True
-        else:
-            return False
 
-    # Method to execute all steps of the unsuccessful login process
+    # Method to execute all steps of the change and check a new website language
     def execute_all_langauge_change_flow(self):
         try:
             self.click_on_languages()
-            time.sleep(2)
             self.click_on_wanted_langauge()
-            time.sleep(1)
             self.click_on_home_btn()
-            time.sleep(2)
-            # self.click_on_search_page()
-            # self.click_on_search_bar_and_type()
-            # self.click_on_search_btn()
-            # result = self.check_on_first_result()
             return True
         except Exception as e:
             print(e)

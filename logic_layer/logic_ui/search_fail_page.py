@@ -1,9 +1,7 @@
 import time
-from selenium.common import ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from infra_layer.infra_ui.basePage import base
 
 
@@ -13,6 +11,7 @@ class searchfail(base):
     PRESS_ON_SEARCH_BTN_XPATH = '//button[@class="submit-btn css-141bgb3 eda4b3r0"]'
     FIRST_SEARCH_RESULT = '//div[@class="search-item"]'
     NO_RESULTS_XPATH='//div[@class="no-results"]'
+
 
     def __init__(self, num, list_info, cabs, driver=None):
         super().__init__(list_info)
@@ -41,6 +40,8 @@ class searchfail(base):
         search_btn = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.PRESS_ON_SEARCH_BTN_XPATH)))
         search_btn.click()
+
+
 
     # takes the first result and checks if its relevant
     def check_on_error_result(self):
