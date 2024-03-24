@@ -8,7 +8,6 @@ class APIWrapper:
 
 
     def __init__(self):
-        self.token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNDY5NTAzLCJqdGkiOiJmOTU5NTQwMjAzOGE0YzAxOWQzMjBmYWE1NGNkNDQyNSIsInVzZXJfaWQiOjh9.FZSD986Uk5xvLy7qN5USWy1gHh5EcYhW93fQBMh4XAo"
         self.response = None
         self.my_request = requests
         self.load_config()
@@ -23,12 +22,14 @@ class APIWrapper:
         self.jira_url = json_content.get('jira_url')
         self.emailAdress = json_content.get('emailChrome')
         self.usr_id = json_content.get('userid')
+        self.token=json_content.get('jira_tok')
+        self.auth_path=json_content.get('auth_path')
 
 
 
     def api_get_request(self, url, reqBody=None):
         headers = {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Zjk2YjIyZmI1YjlkMDU4YTFlYmNhMSIsInJvbGUiOiJVU0VSIiwicHJvdmlkZXIiOiJsb2NhbCIsImVtYWlsIjoibWhtZGh1c3M0NEBnbWFpbC5jb20iLCJleHRyYVVzZXJEYXRhIjp7ImFwcHMiOlsiZ2Z3Il19LCJjcmVhdGVkQXQiOjE3MTA4NDQ3NjYyMTksImlhdCI6MTcxMDg0NDc2Nn0.sF1arO_w-etp81SYVsGuS84V3nl-t761BX3ddKoSoos"
+            "Authorization": self.auth_path
             # Add other headers if needed
         }
         self.response = self.my_request.get(url, headers=headers)
@@ -41,7 +42,7 @@ class APIWrapper:
 
     def api_post_request(self, url, reqBody):
         headers = {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Zjk2YjIyZmI1YjlkMDU4YTFlYmNhMSIsInJvbGUiOiJVU0VSIiwicHJvdmlkZXIiOiJsb2NhbCIsImVtYWlsIjoibWhtZGh1c3M0NEBnbWFpbC5jb20iLCJleHRyYVVzZXJEYXRhIjp7ImFwcHMiOlsiZ2Z3Il19LCJjcmVhdGVkQXQiOjE3MTA4NDQ3NjYyMTksImlhdCI6MTcxMDg0NDc2Nn0.sF1arO_w-etp81SYVsGuS84V3nl-t761BX3ddKoSoos"
+            "Authorization": self.auth_path
             # Add other headers if needed
         }
         self.response = requests.post(url, json=reqBody, headers=headers)
@@ -53,7 +54,7 @@ class APIWrapper:
 
     def api_patch_request(self, url, reqBody):
         headers = {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Zjk2YjIyZmI1YjlkMDU4YTFlYmNhMSIsInJvbGUiOiJVU0VSIiwicHJvdmlkZXIiOiJsb2NhbCIsImVtYWlsIjoibWhtZGh1c3M0NEBnbWFpbC5jb20iLCJleHRyYVVzZXJEYXRhIjp7ImFwcHMiOlsiZ2Z3Il19LCJjcmVhdGVkQXQiOjE3MTA4NDQ3NjYyMTksImlhdCI6MTcxMDg0NDc2Nn0.sF1arO_w-etp81SYVsGuS84V3nl-t761BX3ddKoSoos"
+            "Authorization": self.auth_path
             # Add other headers if needed
         }
         self.response = requests.patch(url, json=reqBody, headers=headers)

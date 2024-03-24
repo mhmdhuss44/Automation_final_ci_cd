@@ -3,5 +3,7 @@
  "words":{"text": "Hello everyone , my name is mhmd huss :) you can call me mhmd ;P , mhmd loves everyone and have a lot of friends"},
   "jira_url" : "https://mhmdhussapi.atlassian.net/",
     "emailChrome": "mhmdhuss44@gmail.com",
-  "userid": "65f96b22fb5b9d058a1ebca1"
+  "userid": "65f96b22fb5b9d058a1ebca1",
+  "jira_tok": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEzNDY5NTAzLCJqdGkiOiJmOTU5NTQwMjAzOGE0YzAxOWQzMjBmYWE1NGNkNDQyNSIsInVzZXJfaWQiOjh9.FZSD986Uk5xvLy7qN5USWy1gHh5EcYhW93fQBMh4XAo",
+  "auth_path": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1Zjk2YjIyZmI1YjlkMDU4YTFlYmNhMSIsInJvbGUiOiJVU0VSIiwicHJvdmlkZXIiOiJsb2NhbCIsImVtYWlsIjoibWhtZGh1c3M0NEBnbWFpbC5jb20iLCJleHRyYVVzZXJEYXRhIjp7ImFwcHMiOlsiZ2Z3Il19LCJjcmVhdGVkQXQiOjE3MTA4NDQ3NjYyMTksImlhdCI6MTcxMDg0NDc2Nn0.sF1arO_w-etp81SYVsGuS84V3nl-t761BX3ddKoSoos"
 }
