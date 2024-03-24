@@ -14,6 +14,10 @@ class loginTests(unittest.TestCase):
         self.configs=self.infra_layer.get_all_configurations()
 
 
+    def tearDown(self) -> None:
+        self.infra_layer.quit_drive(self.result_driver)
+
+
     def test_run_grid_serial(self):
         print(self.infra_layer.cab_list)
         for cabs in self.infra_layer.cab_list:
@@ -30,9 +34,9 @@ class loginTests(unittest.TestCase):
 
         self.loginPage = loginLogic(browser_type, self.infra_layer.get_all_configurations(), cap)
         result=self.loginPage.execute_all_log_in_flow()
+        self.result_driver=self.loginPage._driver
 
         assert result == True, "The logout Process has failed"
-        self.infra_layer.quit_drive(self.loginPage._driver)
 
 
     # to verify that we can successfuly logout after doing login
@@ -44,9 +48,9 @@ class loginTests(unittest.TestCase):
 
         self.logoutPage = logoutLogic(browser_type, self.infra_layer.get_all_configurations(), cap,self.loginPage._driver)
         result=self.logoutPage.execute_all_log_out_flow()
+        self.result_driver=self.logoutPage._driver
 
         assert result==True,"The logout Process has failed"
-        self.infra_layer.quit_drive(self.logoutPage._driver)
 
 
 
@@ -58,9 +62,10 @@ class loginTests(unittest.TestCase):
 
         self.failedLogin = loginFailLogic(browser_type, self.infra_layer.get_all_configurations(), cap,self.loginPage._driver)
         result=self.failedLogin.execute_all_failed_log_in_flow()
+        self.result_driver=self.logoutPage._driver
 
         assert result==True,"Error! success in login with wrong info!"
-        self.infra_layer.quit_drive(self.logoutPage._driver)
+
 
 
 

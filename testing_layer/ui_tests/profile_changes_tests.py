@@ -12,6 +12,10 @@ class profileChangeTests(unittest.TestCase):
         self.infra_layer=browserWrapper()
         self.configs=self.infra_layer.get_all_configurations()
 
+    def tearDown(self) -> None:
+        self.infra_layer.quit_drive(self.result_driver)
+
+
 
     def test_run_grid_serial(self):
         print(self.infra_layer.cab_list)
@@ -32,10 +36,11 @@ class profileChangeTests(unittest.TestCase):
 
         self.modify_profile_Page=profileInfoLogic(browser_type, self.infra_layer.get_all_configurations(), cap,self.loginPage._driver)
         result=self.modify_profile_Page.execute_all_profile_change_flow()
+        self.result_driver=self.modify_profile_Page._driver
 
         assert result == "haifa", "changing location has failed"
 
-        self.infra_layer.quit_drive(self.modify_profile_Page._driver)
+
 
 
 

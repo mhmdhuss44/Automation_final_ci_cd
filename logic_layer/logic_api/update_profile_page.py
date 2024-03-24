@@ -1,21 +1,22 @@
 
 class update_profile:
 
-    def __init__(self,api_object,url):
+    def __init__(self,api_object,url,city):
         self.my_api = api_object
         self.url=url
-        self.create_town_body()
+        self.create_town_body(city)
 
 
     # we create the body with our wanted changes
-    def create_town_body(self):
+    def create_town_body(self,city):
+        print("the chosen city is:",city)
         self.body = {"firstName": "mhmd",
                      "lastName": "huss",
                      "email": "mhmdhuss44@gmail.com",
                      "applicationData": {
                          "gfw": {
                              "country": "ISR",
-                             "city": "haifa",
+                             "city": city,
                              "sector": "Other",
                              "company": "there are no"
                          }

@@ -8,7 +8,7 @@ from infra_layer.infra_ui.basePage import base
 class profileInfoLogic(base):
 
     USR_PROFILE_XPATH='//a[@href="/my-gfw/"]'
-    UPDATE_PROFILE_BTN_XPATH='//button[@class="user-btn css-6lid9l eda4b3r0"]'
+    UPDATE_PROFILE_BTN_XPATH='//button[contains(@class,"user-btn")]'
     CURNT_TOWN_XPATH="//input[@class='c-form-input' and @name='city']"
 
 

@@ -14,6 +14,10 @@ class searchTests(unittest.TestCase):
         self.configs=self.infra_layer.get_all_configurations()
 
 
+    def tearDown(self) -> None:
+        self.infra_layer.quit_drive(self.result_driver)
+
+
     def test_run_grid_serial(self):
         print(self.infra_layer.cab_list)
         for cabs in self.infra_layer.cab_list:
@@ -30,9 +34,10 @@ class searchTests(unittest.TestCase):
 
         self.search_success = searchSucess(browser_type,self.infra_layer.get_all_configurations(),cap)
         result=self.search_success.search_result_sucess_flow()
+        self.result_driver=self.search_success._driver
+
         assert result==True, "search has failed!"
 
-        self.infra_layer.quit_drive(self.search_success._driver)
 
 
     # test_ui to verify that when we search invalid input we dont get any serach result
@@ -41,9 +46,10 @@ class searchTests(unittest.TestCase):
 
         self.search_fail = searchfail(browser_type,self.infra_layer.get_all_configurations(),cap)
         result=self.search_fail.search_result_fail_flow()
+        self.result_driver=self.search_fail._driver
+
         assert result==True, "searching invalid inputs has succeeded!"
 
-        self.infra_layer.quit_drive(self.search_fail._driver)
 
 
 
@@ -53,9 +59,10 @@ class searchTests(unittest.TestCase):
 
         self.search_success = searchOverload(browser_type,self.infra_layer.get_all_configurations(),cap)
         result=self.search_success.search_result_sucess_flow()
+        self.result_driver=self.search_success._driver
+
         assert result==True, "search overload has failed!"
 
-        self.infra_layer.quit_drive(self.search_success._driver)
 
 
 

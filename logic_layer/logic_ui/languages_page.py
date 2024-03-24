@@ -10,8 +10,8 @@ class languageLogic(base):
     LANGAUGES_BTN_XPATH='//button[@aria-label="English"]'
     WANTED_LANGUAGE_XPATH='//button[text()="Français"]'
     SEARCH_PAGE_XPATH = '//a[@href="/search/"]'
-    SEARCH_BTN_XPAAH = '//input[@class="input text css-195ifoz efi91wg0"]'
-    PRESS_ON_SEARCH_BTN_XPATH = '//button[@class="submit-btn css-141bgb3 eda4b3r0"]'
+    SEARCH_BTN_XPAAH = '//input[contains(@class,"input text")]'
+    PRESS_ON_SEARCH_BTN_XPATH = '//button[contains(@class,"submit-btn")]'
     FIRST_SEARCH_RESULT = '//div[@class="search-item"]'
     LOGIN_BTN_XPATH = '//a[@href="/my-gfw/"]'
 

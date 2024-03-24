@@ -7,8 +7,8 @@ from infra_layer.infra_ui.basePage import base
 
 class searchOverload(base):
     SEARCH_PAGE_XPATH = '//a[@href="/search/"]'
-    SEARCH_BTN_XPAAH = '//input[@class="input text css-195ifoz efi91wg0"]'
-    PRESS_ON_SEARCH_BTN_XPATH = '//button[@class="submit-btn css-141bgb3 eda4b3r0"]'
+    SEARCH_BTN_XPAAH = '//input[contains(@class,"input text")]'
+    PRESS_ON_SEARCH_BTN_XPATH = '//button[contains(@class,"submit-btn")]'
     FIRST_SEARCH_RESULT = '//div[@class="search-item"]'
 
     def __init__(self, num, list_info, cabs, driver=None):
@@ -25,13 +25,18 @@ class searchOverload(base):
             EC.element_to_be_clickable((By.XPATH, self.SEARCH_PAGE_XPATH)))
         search_page.click()
 
+
     # a method to click on the search bar and write something-in this cas the word tree 1000 times
     def click_on_search_bar_and_type(self):
         search_bar = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.SEARCH_BTN_XPAAH)))
         search_bar.click()
         search_bar.clear()  # Clear any existing text in the input field
-        search_bar.send_keys("tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree tree")
+        search_text = "tree "
+        repetitions = 500
+        for _ in range(repetitions):
+            search_bar.send_keys(search_text)
+
 
     # a method to click on the search
     def click_on_search_btn(self):

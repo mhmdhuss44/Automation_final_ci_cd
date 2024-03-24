@@ -7,8 +7,8 @@ from infra_layer.infra_ui.basePage import base
 
 class searchfail(base):
     SEARCH_PAGE_XPATH = '//a[@href="/search/"]'
-    SEARCH_BTN_XPAAH = '//input[@class="input text css-195ifoz efi91wg0"]'
-    PRESS_ON_SEARCH_BTN_XPATH = '//button[@class="submit-btn css-141bgb3 eda4b3r0"]'
+    SEARCH_BTN_XPAAH = '//input[contains(@class,"input text")]'
+    PRESS_ON_SEARCH_BTN_XPATH = '//button[contains(@class,"submit-btn")]'
     FIRST_SEARCH_RESULT = '//div[@class="search-item"]'
     NO_RESULTS_XPATH='//div[@class="no-results"]'
 

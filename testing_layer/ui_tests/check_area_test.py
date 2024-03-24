@@ -13,6 +13,8 @@ class areaTests(unittest.TestCase):
         self.infra_layer=browserWrapper()
         self.configs=self.infra_layer.get_all_configurations()
 
+    def tearDown(self) -> None:
+        self.infra_layer.quit_drive(self.added_area._driver)
 
     # test_ui to verify that added an area successfully - this is a completion of an api test
     def verify_successful_area_add(self, cab_info,infra_layer):
@@ -25,7 +27,7 @@ class areaTests(unittest.TestCase):
         result=self.added_area.execute_all_check_country_flow()
         assert result==True, "adding area has failed"
 
-        infra_layer.quit_drive(self.added_area._driver)
+
 
 
 

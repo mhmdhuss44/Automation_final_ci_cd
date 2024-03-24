@@ -8,7 +8,7 @@ class loggedInfoTests(unittest.TestCase):
     def setUp(self) -> None:
         self.my_api = APIWrapper()
         self.login_logic = check_logged(self.my_api,self.my_api.url)
-        self.login_result = self.login_logic.checked_logged_in()
+        self.login_result = self.login_logic.get_login_details()
 
 
 
