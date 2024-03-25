@@ -12,7 +12,7 @@ class checkCountryLogic(base):
 
 
 
-    def __init__(self, num, list_info, cabs, driver=None):
+    def __init__(self, num, list_info, cabs,areaName, driver=None):
         super().__init__(list_info)
         if driver is None:
             self.driver_set_up(cabs)
@@ -20,6 +20,7 @@ class checkCountryLogic(base):
             self._driver = driver
         self.num = num
         self.list_info=list_info
+        self.areaname=areaName
 
 
 
@@ -41,7 +42,7 @@ class checkCountryLogic(base):
     def click_on_my_areas(self):
         area_componant = WebDriverWait(self._driver, 10).until(EC.element_to_be_clickable((By.XPATH, self.GET_MY_AREAS)))
         result_text=area_componant.text
-        if "Turkey" in result_text:
+        if self.areaname[0] in result_text:
             return True
         else:
             return False

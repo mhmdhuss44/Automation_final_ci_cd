@@ -1,5 +1,7 @@
 import random2
 
+
+
 def get_random_town():
     israel_towns = [
         "Jerusalem", "Tel Aviv", "Haifa", "Rishon LeZion",
@@ -34,5 +36,9 @@ def get_random_country_info():
         ("India", "IND", "45d0f6f887a18df373fa69c3eb6f13c7")]
 
     return random2.choice(countries)
+
+
+# shared_variables.py
+random_country_to_add = get_random_country_info()
 
 
