@@ -44,8 +44,9 @@ jobs:
           path: report.html
 
       - name: Slack Notification
+        if: always()
         uses: act10ns/slack@v1
         with:
           status: ${{ job.status }}
           channel: '#mhmdhuss_ci'
-          if: always()
+
