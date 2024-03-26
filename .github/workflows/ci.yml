@@ -45,7 +45,7 @@ jobs:
 
       - name: Slack Notification
         if: always()
-        uses: act10ns/slack@v1
+        uses: act10ns/slack@v2.0.0
         with:
           status: ${{ job.status }}
           channel: '#mhmdhuss_ci'
