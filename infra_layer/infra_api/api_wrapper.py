@@ -1,4 +1,6 @@
 import json
+import os
+
 import requests
 from jira import JIRA
 
@@ -11,6 +13,7 @@ class APIWrapper:
         self.response = None
         self.my_request = requests
         self.load_config()
+        self.token = os.environ.get('JIRA_TOKEN')
         self.auth_jira = JIRA(basic_auth=('mhmdhuss44@gmail.com', self.token), options={'server': self.jira_url})
 
     def load_config(self):
@@ -22,7 +25,6 @@ class APIWrapper:
         self.jira_url = json_content.get('jira_url')
         self.emailAdress = json_content.get('emailChrome')
         self.usr_id = json_content.get('userid')
-        self.token=json_content.get('jira_tok')
         self.auth_path=json_content.get('auth_path')
 
 
