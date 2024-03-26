@@ -18,7 +18,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requirements.txt
+          pip install requests random2 selenium jira pytest pytest-html
 
       - name: Setup ChromeDriver
         uses: browser-actions/setup-chrome@v1
