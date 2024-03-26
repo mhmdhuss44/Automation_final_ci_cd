@@ -23,6 +23,7 @@ def test_run_grid_serial(infra_layer):
 if __name__ == "__main__":
     # Run the specific test function
     pytest.main([__file__ + "::test_run_grid_serial"])
+#     run example
 
 
 
