@@ -5,8 +5,8 @@ from selenium.webdriver.chrome.options import Options
 
 class browserWrapper:
     # only this path worked
-    JSON_URL = r"C:\Users\mhmdh\Desktop\ci_cd_end\automation_project_ci_cd\confg_info.json"
-    # JSON_URL = r"confg_info.json"
+    # JSON_URL = r"C:\Users\mhmdh\Desktop\ci_cd_end\automation_project_ci_cd\confg_info.json"
+    JSON_URL = r"confg_info.json"
     def __init__(self):
         self.hub = None
         self.testing_mode = None
@@ -50,47 +50,47 @@ class browserWrapper:
 
 
 
-    # def preapare_cab_list(self):
-    #     temp=self.get_all_configurations()
-    #     browser_names = [name for name, _ in temp['browsers_list']]
-    #     if "chrome" in browser_names:
-    #         print("Chrome found")
-    #         self.chrome_cab = Options()
-    #         # platform = [platform for name, platform in temp['browsers_list'] if name == "chrome"][0]
-    #         # self.chrome_cab.capabilities['platformName'] = platform
-    #         self.chrome_cab.add_argument("--headless")
-    #         self.chrome_cab.add_argument("--no-sandbox")
-    #         self.chrome_cab.add_argument("--disable-dev-shm-usage")
-    #         self.cab_list.append((self.chrome_cab,1))
-    #
-    #     if "firefox" in browser_names:
-    #         print("Firefox found")
-    #         self.fire_cab = webdriver.FirefoxOptions()
-    #         # platform = [platform for name, platform in temp['browsers_list'] if name == "firefox"][0]
-    #         # self.fire_cab.capabilities['platformName'] = platform
-    #         self.fire_cab.add_argument("--headless")
-    #         # Add Firefox specific sandbox disabling options
-    #         self.fire_cab.add_argument("--no-sandbox")
-    #         self.fire_cab.add_argument("--disable-dev-shm-usage")
-    #         self.cab_list.append((self.fire_cab,2))
-
-
     def preapare_cab_list(self):
         temp=self.get_all_configurations()
         browser_names = [name for name, _ in temp['browsers_list']]
         if "chrome" in browser_names:
             print("Chrome found")
-            self.chrome_cab = webdriver.ChromeOptions()
-            platform = [platform for name, platform in temp['browsers_list'] if name == "chrome"][0]
-            self.chrome_cab.capabilities['platformName'] = platform
+            self.chrome_cab = Options()
+            # platform = [platform for name, platform in temp['browsers_list'] if name == "chrome"][0]
+            # self.chrome_cab.capabilities['platformName'] = platform
+            self.chrome_cab.add_argument("--headless")
+            self.chrome_cab.add_argument("--no-sandbox")
+            self.chrome_cab.add_argument("--disable-dev-shm-usage")
             self.cab_list.append((self.chrome_cab,1))
 
         if "firefox" in browser_names:
             print("Firefox found")
             self.fire_cab = webdriver.FirefoxOptions()
-            platform = [platform for name, platform in temp['browsers_list'] if name == "firefox"][0]
-            self.fire_cab.capabilities['platformName'] = platform
+            # platform = [platform for name, platform in temp['browsers_list'] if name == "firefox"][0]
+            # self.fire_cab.capabilities['platformName'] = platform
+            self.fire_cab.add_argument("--headless")
+            # Add Firefox specific sandbox disabling options
+            self.fire_cab.add_argument("--no-sandbox")
+            self.fire_cab.add_argument("--disable-dev-shm-usage")
             self.cab_list.append((self.fire_cab,2))
+
+
+    # def preapare_cab_list(self):
+    #     temp=self.get_all_configurations()
+    #     browser_names = [name for name, _ in temp['browsers_list']]
+    #     if "chrome" in browser_names:
+    #         print("Chrome found")
+    #         self.chrome_cab = webdriver.ChromeOptions()
+    #         platform = [platform for name, platform in temp['browsers_list'] if name == "chrome"][0]
+    #         self.chrome_cab.capabilities['platformName'] = platform
+    #         self.cab_list.append((self.chrome_cab,1))
+    #
+    #     if "firefox" in browser_names:
+    #         print("Firefox found")
+    #         self.fire_cab = webdriver.FirefoxOptions()
+    #         platform = [platform for name, platform in temp['browsers_list'] if name == "firefox"][0]
+    #         self.fire_cab.capabilities['platformName'] = platform
+    #         self.cab_list.append((self.fire_cab,2))
 
     def quit_drive(self,driver):
         driver.quit()

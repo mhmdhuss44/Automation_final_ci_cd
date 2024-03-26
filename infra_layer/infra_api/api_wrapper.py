@@ -3,8 +3,8 @@ import requests
 from jira import JIRA
 
 class APIWrapper:
-    PATH_JSON = r"C:\Users\mhmdh\Desktop\savedCi\Automation_final_ci_cd\config_api.json"
-    # PATH_JSON = r"config_api.json"
+    # PATH_JSON = r"C:\Users\mhmdh\Desktop\savedCi\Automation_final_ci_cd\config_api.json"
+    PATH_JSON = r"config_api.json"
 
 
     def __init__(self):
