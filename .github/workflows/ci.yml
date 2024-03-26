@@ -4,8 +4,8 @@ on: [push]
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_CHANNEL_URL }}
+#    env:
+#      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_CHANNEL_URL }}
 
     steps:
       - name: Checkout code
@@ -43,10 +43,10 @@ jobs:
           name: test-reports
           path: report.html
 
-      - name: Slack Notification
-        if: always()
-        uses: act10ns/slack@v1
-        with:
-          status: ${{ job.status }}
-          channel: '#mhmdhuss_ci'
+#      - name: Slack Notification
+#        if: always()
+#        uses: act10ns/slack@v1
+#        with:
+#          status: ${{ job.status }}
+#          channel: '#mhmdhuss_ci'
 

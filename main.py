@@ -1,5 +1,6 @@
 from Utilities import random_country_to_add
 import pytest
+from testing_layer.api_tests.check_logged_tests import loggedInfoTests
 from testing_layer.api_tests.add_area_test import AreaTests
 from infra_layer.infra_ui.wrapper import browserWrapper
 from testing_layer.ui_tests.check_area_test import areaTests
