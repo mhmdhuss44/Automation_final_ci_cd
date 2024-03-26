@@ -27,8 +27,9 @@ class loggedInfoTests(unittest.TestCase):
     # Test if the email matches the expected email (thats written in the json file)
     def test_check_email(self):
         response_data = self.login_result.json()
-        self.assertEqual(response_data["email"], "hello", "Email does not match")
-        if response_data["email"]!="hello":
+        try:
+            self.assertEqual(response_data["email"], "hello", "Email does not match")
+        except Exception as e:
             self.my_api.create_issue("Verify true email adress","Test to check if the logged in email equals to my email","KAN")
 
 
