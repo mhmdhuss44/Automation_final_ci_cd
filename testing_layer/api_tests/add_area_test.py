@@ -11,11 +11,11 @@ class AreaTests(unittest.TestCase):
         self.area_logic = addArea(self.my_api,self.my_api.url)
 
 
-    # to make sure that we chnaged the town successfully - this is a completion to a ui test
+    # test to add an area to my areas list  - this is a completion to a ui test
     def test_add_new_area(self):
         # print("the chosen country is:",random_country_to_add)
         area_result = self.area_logic.add_new_area(random_country_to_add)
-        print("The result:",area_result.json())
+        # print("The result:",area_result.json())
         self.assertEqual(area_result.status_code, 200, "Expected status code 200")
 
 

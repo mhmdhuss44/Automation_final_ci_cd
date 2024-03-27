@@ -1,5 +1,3 @@
-# Class to handle another ui_tests, ensuring that we can't login with the wrong password
-import time
 from selenium.common import NoSuchElementException, StaleElementReferenceException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait

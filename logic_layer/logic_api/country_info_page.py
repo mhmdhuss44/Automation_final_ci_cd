@@ -30,7 +30,7 @@ class countryInfo:
         rand_country=self.random_country()
         country_url = f"{self.url}api/gfw/v2/geostore/admin/{rand_country}/?thresh=0.005"
         response = self.my_api.api_get_request(country_url)
-        return response
+        return response,rand_country
 
 
 

@@ -14,7 +14,7 @@ class loggedInfoTests(unittest.TestCase):
 
     # to make sure that we suceesfully are logged in with valid details
     def test_check_if_success_logged_in(self):
-        print("The result:",self.login_result.json())
+        # print("The result:",self.login_result.json())
         self.assertEqual(self.login_result.status_code, 200, "Expected status code 200")
 
 
@@ -24,7 +24,7 @@ class loggedInfoTests(unittest.TestCase):
         self.assertEqual(response_data["id"], self.my_api.usr_id, "ID does not match")
 
 
-    # Test if the email matches the expected email (thats written in the json file)
+    # Test to check if the email matches the expected email (thats written in the json file)
     def test_check_email(self):
         response_data = self.login_result.json()
         try:

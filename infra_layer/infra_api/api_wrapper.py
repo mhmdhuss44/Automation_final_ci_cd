@@ -32,7 +32,6 @@ class APIWrapper:
     def api_get_request(self, url, reqBody=None):
         headers = {
             "Authorization": self.auth_path
-            # Add other headers if needed
         }
         self.response = self.my_request.get(url, headers=headers)
 
