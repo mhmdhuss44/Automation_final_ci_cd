@@ -4,8 +4,8 @@ on: [push]
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
-#    env:
-#      JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+    env:
+      JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
 #      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_CHANNEL_URL }}
 
     steps:

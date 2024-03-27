@@ -31,6 +31,7 @@ class loggedInfoTests(unittest.TestCase):
             self.assertEqual(response_data["email"], "hello", "Email does not match")
         except Exception as e:
             self.my_api.create_issue("Verify true email adress","Test to check if the logged in email equals to my email","KAN")
+            self.fail("Test failed due to an exception: {}".format(str(e)))
 
 
 
