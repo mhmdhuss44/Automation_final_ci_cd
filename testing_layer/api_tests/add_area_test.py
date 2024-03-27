@@ -15,7 +15,6 @@ class AreaTests(unittest.TestCase):
     def test_add_new_area(self):
         # print("the chosen country is:",random_country_to_add)
         area_result = self.area_logic.add_new_area(random_country_to_add)
-        # print("The result:",area_result.json())
         self.assertEqual(area_result.status_code, 200, "Expected status code 200")
 
 
