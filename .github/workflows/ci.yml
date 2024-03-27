@@ -36,7 +36,7 @@ jobs:
 
       - name: Run Tests and Generate Report
         run: |
-          pytest main.py --html=report.html || true
+          pytest main.py --html=report.html
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
