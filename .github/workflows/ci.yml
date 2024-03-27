@@ -22,7 +22,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests random2 selenium jira pytest pytest-html
+          pip install -r requirements.txt
 
       - name: Setup ChromeDriver
         uses: browser-actions/setup-chrome@v1
@@ -36,7 +36,7 @@ jobs:
 
       - name: Run Tests and Generate Report
         run: |
-          pytest main.py --html=report.html
+          pytest main.py --html=report.html --continue-on-collection-errors
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v2
