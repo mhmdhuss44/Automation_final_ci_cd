@@ -19,7 +19,6 @@ class loginTests(unittest.TestCase):
 
 
     def test_run_grid_serial(self):
-        print(self.infra_layer.cab_list)
         for cabs in self.infra_layer.cab_list:
             self.test_verify_successful_log_in(cabs)
 

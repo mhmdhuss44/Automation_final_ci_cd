@@ -12,7 +12,7 @@ def infra_layer():
     return browserWrapper()
 
 def test_run_grid_serial(infra_layer):
-    print(infra_layer.cab_list)
+    # print(infra_layer.cab_list)
     for cabs in infra_layer.cab_list:
         # Instantiate the areaTests class
         search_test_instance = areaTests()
